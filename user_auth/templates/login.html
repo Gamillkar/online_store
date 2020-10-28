@@ -1,0 +1,20 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block title %}Авторизация пользователя{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="header"></div>
+        <h2>Авторизация</h2>
+        <form action='' method="POST">
+            <p>Введите эл.почту</p>
+                    {{ form.email }}
+            <br>
+            <p>Введите пароль</p>
+                    {{ form.password }}
+            {% csrf_token %}
+                    <input type="submit" value="Войти"/>
+        </form>
+    </div>
+{% endblock %}
