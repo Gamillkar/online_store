@@ -1,27 +1,26 @@
 {% extends "shop/base.html" %}
 
-
 {% load static %}
 
-{% block title %}Главная страница{% endblock %}
+{% block title %}Home{% endblock %}
 
 {% block content %}
     <div class="container">
         {%if request.user.is_authenticated%}
             <div class="header"></div>
-                Привет, {{user.username}}.
+                Hi, {{user.username}}.
                 <br>
-                <a href= "/signup"> Зарегистрировать нового пользователя  </a>
+                <a href= "/signup"> Register a new user  </a>
                 <br>
-                 <a href="/login">Авторизоваться под другим пользователем</a>
+                 <a href="/login">Log in as a different user</a>
                  <br>
-                <a href="{% url 'logout'%}">Выйти</a>
+                <a href="{% url 'logout'%}">Exit</a>
 
         {% else %}
 
             <div class="header"></div>
-                Привет, <b>гость</b>.<br>
-                Пожалуйста, <a href="/signup">зарегистрируйся</a> или <a href="/login">авторизуйся</a>!
+                Hi, <b>a guest</b>.<br>
+                Please, <a href="/signup">signup</a> or <a href="/login">login</a>!
         {% endif %}
     </div>
 {% endblock %}

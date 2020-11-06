@@ -1,23 +1,23 @@
 {% extends "shop/base.html" %}
 {% load static %}
 
-{% block title %}Регистрация{% endblock %}
+{% block title %}Signup{% endblock %}
 
 {% block content %}
     <div class="container">
         <div class="header"></div>
-        <h2>Регистрация</h2>
+        <h2>Signup</h2>
         <form action='' method="POST">
-            <p>Имя пользователя</p>
+            <p>Login</p>
                     {{ form.login }}
             <br>
-            <p>Введите эл.почту</p>
+            <p>Email</p>
                     {{ form.email }}
             <br>
-            <p>Придумайте пароль</p>
+            <p>Password</p>
                     {{ form.password }}
             <br>
-            <p>Подтвердите пароль</p>
+            <p>Repeat Password</p>
                     {{ form.conf_password }}
                     {% csrf_token %}
             <br>

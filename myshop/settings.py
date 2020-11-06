@@ -134,3 +134,5 @@ CART_SESSION_ID = 'cart'
 AUTHENTICATION_BACKENDS = [
     'user_auth.email_auth.EmailBackend',
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

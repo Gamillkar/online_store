@@ -6,12 +6,15 @@
 {% block content %}
     <div class="container">
         <div class="header"></div>
-        <h2>Авторизация</h2>
+        <h2>Login</h2>
         <form action='' method="POST">
-            <p>Введите эл.почту</p>
+            {% if error %}
+                <p>Authorisation Error. Invalid email or password</p>
+            {% endif %}
+            <p>Email</p>
                     {{ form.email }}
             <br>
-            <p>Введите пароль</p>
+            <p>Password</p>
                     {{ form.password }}
             {% csrf_token %}
                     <input type="submit" value="Войти"/>

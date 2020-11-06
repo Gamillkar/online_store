@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.shortcuts import render
 from .forms import CreateUsersForm, LoginUseForm
 from django.contrib.auth import authenticate, login, logout
@@ -22,10 +23,12 @@ def signup(request):
             conf_password = request.POST.get("conf_password")
             if password == conf_password:
                 user = User.objects.create_user(username=login, email=email, password=password)
+                send(password, email)
                 user.save()
+
                 return render(
                     request,
-                    'home.html')
+                    'send.html')
     context = {
         'form': form
     }
@@ -42,6 +45,7 @@ def logout_user(request):
 
 def login_user(request):
     form = LoginUseForm
+    error = False
     if request.method == 'POST':
         form = LoginUseForm(request.POST)
         if form.is_valid():
@@ -55,9 +59,12 @@ def login_user(request):
                         request,
                         'orders\\order\\create.html'
                     )
-
+            else:
+                error = True
     context = {
-        'form':form
+        'form':form,
+        'error':error
+
 
     }
     return render(
@@ -66,3 +73,7 @@ def login_user(request):
         context,
     )
 
+def send(password, email):
+    send_mail('Django mail',
+              f'Hello, this is Saturn Jewelry. Registration was successful, your password: {password}',
+              'Saturnjw.ru', [email], fail_silently=False)
