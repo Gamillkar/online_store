@@ -57,7 +57,7 @@ def login_user(request):
                     login(request,user)
                     return render(
                         request,
-                        'orders\\order\\create.html'
+                        'orders/order/create.html'
                     )
             else:
                 error = True

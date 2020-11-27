@@ -64,7 +64,10 @@ class Cart(object):
 
     def get_total_price(self):
         '''сумма товаров в Корзине'''
-        return sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
+        result_sum = sum(Decimal(item['price']) * item['quantity'] for item in self.cart.values())
+        return result_sum
+
+
 
     def clear(self):
         '''удаляем все товары из Корзины'''
